@@ -29,7 +29,7 @@ html, body {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: rgb(0, 0, 0);
   }
   button {
     background-color: #f9f9f9;
