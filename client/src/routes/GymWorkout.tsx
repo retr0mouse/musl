@@ -30,7 +30,7 @@ export default function GymWorkout() {
 
             <button
                 onClick={addExercise}
-                className="w-full border-2 border-neutral-700 py-2 rounded text-xl mt-2"
+                className="w-full bg-amber-200 font-semibold text-2xl py-3 rounded mt-2"
             >
                 Add new exercise
             </button>
