@@ -109,7 +109,7 @@ export function ExerciseComponent({ onRemove }: ExerciseProps) {
                             placeholder="0"
                         />
 
-                        <button onClick={() => markSetDone(set)} className={"bg-green-300 p-1 w-6 h-6 rounded col-start-6 self-center"}>
+                        <button onClick={() => markSetDone(set)} className={"bg-green-300 p-1 w-6 h-6 rounded col-start-6 place-self-end"}>
                             <img src={"/icons/check.svg"} alt={"kek"}/>
                         </button>
 
