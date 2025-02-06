@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path="/api/exercise")
 public class ExerciseController {
-    private ExerciseRepository exerciseRepository; // This should now work
+    @Autowired
+    private ExerciseRepository exerciseRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
     public @ResponseBody String addNewExercise (@RequestParam String title
