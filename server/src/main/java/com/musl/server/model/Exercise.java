@@ -1,9 +1,8 @@
 package com.musl.server.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Exercise {
@@ -16,6 +15,17 @@ public class Exercise {
     private String imageUrl;
 
     private String description;
+
+    @ManyToMany(mappedBy = "exercises")
+    Set<Template> templates;
+
+    public Set<Template> getTemplates() {
+        return templates;
+    }
+
+    public void setTemplates(Set<Template> templates) {
+        this.templates = templates;
+    }
 
     public String getImageUrl() {
         return imageUrl;

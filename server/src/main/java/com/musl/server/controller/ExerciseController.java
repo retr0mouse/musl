@@ -12,12 +12,12 @@ public class ExerciseController {
     @Autowired
     private ExerciseRepository exerciseRepository;
 
-    @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewExercise (@RequestParam String title
-            , @RequestParam String imageUrl, @RequestParam String description) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
+    @PostMapping(path="/add")
+    public @ResponseBody String addNewExercise (
+            @RequestParam String title,
+            @RequestParam String imageUrl,
+            @RequestParam String description
+    ) {
         Exercise exercise = new Exercise();
         exercise.setTitle(title);
         exercise.setImageUrl(imageUrl);
@@ -28,7 +28,6 @@ public class ExerciseController {
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Exercise> getAllExercises() {
-        // This returns a JSON or XML with the users
         return exerciseRepository.findAll();
     }
 }
