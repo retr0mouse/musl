@@ -26,6 +26,10 @@ public class Template {
         return exercises;
     }
 
+    public void addExercise(Exercise exercise) {
+        this.exercises.add(exercise);
+    }
+
     public void setExercises(Set<Exercise> exercises) {
         this.exercises = exercises;
     }

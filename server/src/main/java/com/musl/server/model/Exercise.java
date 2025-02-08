@@ -1,5 +1,6 @@
 package com.musl.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -17,10 +18,15 @@ public class Exercise {
     private String description;
 
     @ManyToMany(mappedBy = "exercises")
+    @JsonIgnore
     Set<Template> templates;
 
     public Set<Template> getTemplates() {
         return templates;
+    }
+
+    public void addTemplate(Template template) {
+        templates.add(template);
     }
 
     public void setTemplates(Set<Template> templates) {

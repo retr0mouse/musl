@@ -35,10 +35,10 @@ public class TemplateController {
                 .orElseThrow();
         Exercise exercise = exerciseRepository.findById(exerciseId)
                 .orElseThrow();
-        Template newTemplate = new Template();
-        newTemplate.setTitle(template.getTitle());
-        newTemplate.setNotes(template.getNotes());
-        templateRepository.save(newTemplate);
+        template.addExercise(exercise);
+        exercise.addTemplate(template);
+        templateRepository.save(template);
+        exerciseRepository.save(exercise);
         return "Saved";
     }
 
