@@ -8,11 +8,11 @@ interface Set {
     done: boolean
 }
 
-interface ExerciseProps {
+interface Props {
     onRemove: () => void;
 }
 
-export function ExerciseComponent({ onRemove }: ExerciseProps) {
+export function ExerciseComponent({ onRemove }: Props) {
     const [title, setTitle] = useState("Untitled Exercise");
     const [sets, setSets] = useState<Set[]>([{
         id: 0,

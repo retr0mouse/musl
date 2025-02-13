@@ -7,8 +7,8 @@ import GymWorkout from "./routes/GymWorkout.tsx";
 export default function App() {
     return (
         <>
-            <nav className={'bg-amber-400 text-3xl font-extrabold pl-3 pb-2'}><Link to={'/'}>musl.</Link></nav>
-            <main className={'mt-4 px-5'}>
+            <nav className={'bg-primary text-3xl font-extrabold pl-3 pb-2'}><Link to={'/'}>musl.</Link></nav>
+            <main className={'mt-16 px-24'}>
                 <Routes>
                     <Route path={'/'} element={<HomePage />}></Route>
                     <Route path={'/gym'} element={<GymPage />}></Route>
