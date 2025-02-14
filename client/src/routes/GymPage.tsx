@@ -9,7 +9,7 @@ export default function GymPage() {
             <Link
                 to={'/gym-workout'}
                 state={{ workoutTitle: "Empty Workout"}}
-                className={"block w-80"}
+                className={"block max-w-80"}
             >
                 <div className={"bg-accent font-semibold text-2xl py-3 px-2 rounded-xl mt-2 text-center text-[#ffffff]"}>
                     Start an Empty Workout
@@ -19,7 +19,7 @@ export default function GymPage() {
             <Link
                 to={'/gym-workout'}
                 state={{ workoutTitle: "Strength Training"}}
-                className={"block w-96"}
+                className={"block max-w-96"}
                 >
                     <TemplateButton template={{
                         id: 0,
