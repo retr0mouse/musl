@@ -9,7 +9,7 @@ interface Props {
 
 export default function TemplateButton(props: Props) {
     return (
-        <Link to="/gym-workout" state={{ workoutTitle: props.template.title }} className={"w-80 h-56 font-semibold text-2xl p-5 rounded-xl mt-2 text-center bg-secondary flex flex-col justify-between"}>
+        <Link to="/gym-workout" state={{ template: props.template }} className={"w-80 h-56 font-semibold text-2xl p-5 rounded-xl mt-2 text-center bg-secondary flex flex-col justify-between"}>
             <div className="flex justify-between">
                 <div className="text-start">
                     <h2>{props.template.title}</h2>
@@ -20,7 +20,7 @@ export default function TemplateButton(props: Props) {
                 </Link>
             </div>
 
-            <div className="mt-2 text-start">
+            <div className="mt-2 text-start overflow-hidden">
                 {props.template.exercises.map((exercise) => (
                     <p className="text-lg opacity-70" key={exercise.id}>
                         {exercise.title}

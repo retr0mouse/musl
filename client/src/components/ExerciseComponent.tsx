@@ -9,11 +9,12 @@ interface Set {
 }
 
 interface Props {
+    title: string;
     onRemove: () => void;
 }
 
-export function ExerciseComponent({ onRemove }: Props) {
-    const [title, setTitle] = useState("Untitled Exercise");
+export function ExerciseComponent(props: Props) {
+    const [title, setTitle] = useState(props.title ? props.title :"Untitled Exercise");
     const [sets, setSets] = useState<Set[]>([{
         id: 0,
         previous: null,
@@ -58,7 +59,7 @@ export function ExerciseComponent({ onRemove }: Props) {
                     className="text-2xl font-mono bg-transparent border-b border-neutral-700 focus:outline-none"
                 />
                 <button
-                    onClick={onRemove}
+                    onClick={props.onRemove}
                     className="text-red-500 font-bold px-2"
                 >
                     x

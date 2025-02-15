@@ -1,30 +1,40 @@
 import { useState } from "react";
 import { ExerciseComponent } from "../components/ExerciseComponent";
 import { useLocation } from "react-router-dom";
+import { Template } from "../interfaces/Template";
+import { Exercise } from "../interfaces/Exercise";
 
 export default function GymWorkout() {
     const location = useLocation();
-    const [exercises, setExercises] = useState<number[]>([]);
-    const [nextExerciseId, setNextExerciseId] = useState(0);
-    const workoutTitle = location.state?.workoutTitle || "Untitled Workout";
+    const template = location.state?.template as Template;
+    const [exercises, setExercises] = useState<Exercise[]>(template.exercises);
+    const [nextExerciseId, setNextExerciseId] = useState(template.exercises.length);
+
+
 
     function addExercise() {
-        setExercises([...exercises, nextExerciseId]);
+        setExercises([...exercises, {
+            id: nextExerciseId,
+            title: "Untitled Exercise",
+            imageUrl: "",
+            description: "string"
+        }]);
         setNextExerciseId(nextExerciseId + 1);
     }
 
     function removeExercise(id: number) {
-        setExercises(exercises.filter(e => e !== id));
+        setExercises(exercises.filter(e => e.id !== id));
     }
 
     return (
         <>
-            <h1 className="text-4xl font-mono text-center mb-8">{workoutTitle}</h1>
+            <h1 className="text-4xl font-mono text-center mb-8">{template.title}</h1>
 
-            {exercises.map((id) => (
+            {exercises.map((exercise, index) => (
                 <ExerciseComponent
-                    key={id}
-                    onRemove={() => removeExercise(id)}
+                    key={index}
+                    onRemove={() => removeExercise(index)}
+                    title={exercise.title}
                 />
             ))}
 

@@ -1,6 +1,7 @@
 package com.musl.server.controller;
 
 import com.musl.server.model.Exercise;
+import com.musl.server.model.Template;
 import com.musl.server.repository.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,16 +14,12 @@ public class ExerciseController {
     private ExerciseRepository exerciseRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewExercise (
-            @RequestParam String title,
-            @RequestParam String imageUrl,
-            @RequestParam String description
-    ) {
-        Exercise exercise = new Exercise();
-        exercise.setTitle(title);
-        exercise.setImageUrl(imageUrl);
-        exercise.setDescription(description);
-        exerciseRepository.save(exercise);
+    public @ResponseBody String addNewExercise (@RequestBody Exercise exercise) {
+        Exercise newExercise = new Exercise();
+        newExercise.setTitle(exercise.getTitle());
+        newExercise.setImageUrl(exercise.getImageUrl());
+        newExercise.setDescription(exercise.getDescription());
+        exerciseRepository.save(newExercise);
         return "Saved";
     }
 
