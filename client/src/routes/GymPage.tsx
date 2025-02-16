@@ -21,7 +21,7 @@ export default function GymPage() {
                 state={{ workoutTitle: "Empty Workout" }}
                 className={"block max-w-80"}
             >
-                <div className={"bg-accent font-semibold text-2xl py-3 px-2 rounded-xl mt-2 text-center text-[#ffffff]"}>
+                <div className={"bg-primary font-semibold text-2xl py-3 px-2 rounded-xl mt-2 text-center text-[#ffffff]"}>
                     Start an Empty Workout
                 </div>
             </Link>
