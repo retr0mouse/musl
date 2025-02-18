@@ -1,24 +1,16 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
     return (
         <>
-            <h1 className={'place-self-center text-4xl font-mono'}>Get Started</h1>
-            <h2 className={'my-5 text-lg'}>Select the activity</h2>
-            <section className={'flex gap-4'}>
-                <Link to={'/gym'} className={'w-32 place-items-center'}>
-                    <div className={'rounded-xl'}>
-                        <img className={'rounded-md'} src={'images/Dr-Mike-Israetel.jpg'}/>
-                    </div>
-                    <h1>Gym Training</h1>
-                </Link>
-                <Link to={'/bouldering'} className={'w-32 place-items-center'}>
-                    <div className={'rounded-xl'}>
-                        <img className={'rounded-md'} src={'images/Alex-Megos.jpg'}/>
-                    </div>
-                    <h1>Bouldering</h1>
-                </Link>
-            </section>
+            <h1 className="text-3xl font-bold font-sans mb-4">Get started</h1>
+            <h2 className="text-xl font-sans mb-8">Select the activity</h2>
+
+            <div className="flex w-full flex-col lg:flex-row">
+                <Link to={'/gym'} className="font-mono card bg-primary rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Gym Training</Link>
+                <div className="divider lg:divider-horizontal">OR</div>
+                <Link to={'/bouldering'} className="font-mono card bg-primary rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Fingerboarding</Link>
+            </div>
         </>
     )
 }

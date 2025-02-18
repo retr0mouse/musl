@@ -15,17 +15,16 @@ export default function GymPage() {
 
     return (
         <>
-            <h1 className="text-5xl font-black font-mono mb-8">Start workout</h1>
+            <h1 className="text-3xl font-bold font-sans mb-4">Start workout</h1>
             <Link
                 to={'/gym-workout'}
                 state={{ workoutTitle: "Empty Workout" }}
-                className={"block max-w-80"}
             >
-                <div className={"bg-accent font-semibold text-2xl py-3 px-2 rounded-xl mt-2 text-center text-[#ffffff]"}>
+                <div className={"btn"}>
                     Start an Empty Workout
                 </div>
             </Link>
-            <h1 className="text-3xl font-black font-mono mt-24 mb-4">My templates</h1>
+            <h2 className="text-xl font-bold font-sans mt-12 mb-2">My templates</h2>
             <div className={"flex gap-4 md:flex-row flex-col"}>
                 {templates.map((template) => (
                     <TemplateButton key={template.id} template={template} />

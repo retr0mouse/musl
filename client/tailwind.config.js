@@ -4,13 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        text: "#203446",
         background: "#f4f7fb",
-        primary: "#fbbd23",
-        secondary: "#94bee5",
-        accent: "#57a0e0",
+        primary: "#fbbd23"
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
+
+  daisyui: {
+    themes: ["bumblebee"],
+  },
 };

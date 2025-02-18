@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function ExerciseComponent(props: Props) {
-    const [title, setTitle] = useState(props.title ? props.title :"Untitled Exercise");
+    const [title, setTitle] = useState(props.title ? props.title : "Untitled Exercise");
     const [sets, setSets] = useState<Set[]>([{
         id: 0,
         previous: null,
@@ -46,12 +46,12 @@ export function ExerciseComponent(props: Props) {
             ...sets.slice(0, index),
             set,
             ...sets.slice(index + 1)
-            ]
+        ]
         );
     }
 
     return (
-        <div className="mt-8">
+        <div>
             <div className="flex justify-between items-center mb-4">
                 <input
                     value={title}
@@ -74,8 +74,9 @@ export function ExerciseComponent(props: Props) {
 
                 {sets.map((set, index) => (
                     <React.Fragment key={set.id}>
-                        <button onClick={() => removeSet(set.id)} className={"bg-red-400 w-6 h-6 p-0.5 rounded col-start-1 self-center"}>
-                            <img src={"/icons/remove.svg"} alt={"kek"}/>
+                        <button onClick={() => removeSet(set.id)} className={`${set.done ? 'bg-neutral-300 opacity-50' : 'bg-red-400'} p-1 w-6 h-6 rounded col-start-1 place-self-end hover:opacity-80 transition-opacity`}
+                        >
+                            <img src={"/icons/remove.svg"} alt={"kek"} />
                         </button>
 
                         <div
@@ -93,9 +94,11 @@ export function ExerciseComponent(props: Props) {
                             value={set.weight ?? ''}
                             onChange={(e) => {
                                 const value = e.target.value ? parseInt(e.target.value) : null;
-                                setSets(sets.map(s => s.id === set.id ? {...s, weight: value} : s));
+                                setSets(sets.map(s => s.id === set.id ? { ...s, weight: value } : s));
                             }}
-                            className="w-full text-center place-self-center rounded bg-neutral-300"
+                            type="number"
+                            min="0"
+                            className="input w-full h-7"
                             placeholder="0"
                         />
                         <input
@@ -104,14 +107,20 @@ export function ExerciseComponent(props: Props) {
                             value={set.reps ?? ''}
                             onChange={(e) => {
                                 const value = e.target.value ? parseInt(e.target.value) : null;
-                                setSets(sets.map(s => s.id === set.id ? {...s, reps: value} : s));
+                                setSets(sets.map(s => s.id === set.id ? { ...s, reps: value } : s));
                             }}
-                            className="w-full text-center place-self-center rounded bg-neutral-300"
+                            type="number"
+                            min="0"
+                            className="input w-full h-7"
                             placeholder="0"
+
                         />
 
-                        <button onClick={() => markSetDone(set)} className={"bg-green-300 p-1 w-6 h-6 rounded col-start-6 place-self-end"}>
-                            <img src={"/icons/check.svg"} alt={"kek"}/>
+                        <button
+                            onClick={() => markSetDone(set)}
+                            className={`${set.done ? 'bg-neutral-300 opacity-50' : 'bg-green-500'} p-1 w-6 h-6 rounded col-start-6 place-self-end hover:opacity-80 transition-opacity`}
+                        >
+                            <img src={"/icons/check.svg"} alt={"kek"} />
                         </button>
 
                     </React.Fragment>
@@ -119,7 +128,7 @@ export function ExerciseComponent(props: Props) {
 
                 <button
                     onClick={addEmptySet}
-                    className="w-full bg-neutral-300 mt-3 col-start-1 col-end-7 place-self-center rounded py-1 text-xl"
+                    className="btn w-full bg-base-300 mt-3 col-start-1 col-end-7 place-self-center"
                 >
                     Add a Set
                 </button>

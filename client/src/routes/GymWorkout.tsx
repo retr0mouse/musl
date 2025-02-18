@@ -27,8 +27,8 @@ export default function GymWorkout() {
     }
 
     return (
-        <>
-            <h1 className="text-4xl font-mono text-center mb-8">{template.title}</h1>
+        <div className="flex flex-col self-center max-w-2xl mx-auto">
+            <h1 className="text-3xl font-sans font-bold text-start mb-8 ">{template.title}</h1>
 
             {exercises.map((exercise, index) => (
                 <ExerciseComponent
@@ -40,10 +40,11 @@ export default function GymWorkout() {
 
             <button
                 onClick={addExercise}
-                className="w-full bg-amber-200 font-semibold text-2xl py-3 rounded mt-2"
+                className="btn bg-primary mt-4 text-lg"
             >
-                Add new exercise
+                Add a new exercise
             </button>
-        </>
+        </div>
+
     );
 }
