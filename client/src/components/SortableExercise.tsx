@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Handle from "../assets/Handle.svg";
+import HandleIcon from "/public/icons/HandleIcon.svg";
 
 interface Props {
     id: string | number;
@@ -23,7 +23,7 @@ export function SortableExercise({ id, title }: Props) {
                 {...attributes}
                 className="cursor-grab p-2"
             >
-                <img src={Handle} className="text-gray-500 size-3" />
+                <img src={HandleIcon} className="text-gray-500 size-3" />
             </div>
         </div>
     );

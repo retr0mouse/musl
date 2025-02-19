@@ -18,9 +18,9 @@ export default function GymPage() {
             <h1 className="text-3xl font-bold font-sans mb-4">Start workout</h1>
             <Link
                 to={'/gym-workout'}
-                state={{ workoutTitle: "Empty Workout" }}
+                state={{ template: { title: "Empty workout", exercises: [] } }}
             >
-                <div className={"btn"}>
+                <div className={"btn btn-primary "}>
                     Start an Empty Workout
                 </div>
             </Link>

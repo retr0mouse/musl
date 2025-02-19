@@ -7,9 +7,9 @@ export default function HomePage() {
             <h2 className="text-xl font-sans mb-8">Select the activity</h2>
 
             <div className="flex w-full flex-col lg:flex-row">
-                <Link to={'/gym'} className="font-mono card bg-primary rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Gym Training</Link>
+                <Link to={'/gym'} className="btn btn-primary font-mono card  rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Gym Training</Link>
                 <div className="divider lg:divider-horizontal">OR</div>
-                <Link to={'/bouldering'} className="font-mono card bg-primary rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Fingerboarding</Link>
+                <Link to={'/bouldering'} className="btn btn-primary font-mono card rounded-box grid h-32 flex-grow place-items-center text-2xl font-normal">Fingerboarding</Link>
             </div>
         </>
     )

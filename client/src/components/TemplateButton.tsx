@@ -1,12 +1,12 @@
-import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
-import { Link } from "react-router-dom";
+import { closestCenter, DndContext, DragEndEvent } from "@dnd-kit/core";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useState } from "react";
-import clockIcon from "../assets/ClockIcon.svg";
+import { Link } from "react-router-dom";
+import ClockIcon from "/public/icons/ClockIcon.svg";
+import { Exercise } from "../interfaces/Exercise";
 import { Template } from "../interfaces/Template";
 import { SortableExercise } from "./SortableExercise";
-import { Exercise } from "../interfaces/Exercise";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 interface Props {
     template: Template;
@@ -28,7 +28,7 @@ export default function TemplateButton({ template }: Props) {
     return (
         <>
             <button
-                className="w-80 h-56 font-normal p-5 rounded-xl mt-2 text-center bg-primary flex flex-col justify-between"
+                className="cursor-pointer bg-primary w-80 h-56 font-normal p-5 rounded-xl mt-2 text-center flex flex-col justify-between"
                 onClick={() => (document.getElementById('template_modal' + template.title) as HTMLDialogElement).showModal()}
             >
                 <div className="text-start">
@@ -37,7 +37,7 @@ export default function TemplateButton({ template }: Props) {
                 </div>
 
                 <div className="mt-2 text-start overflow-hidden">
-                    {template.exercises.map((exercise) => (
+                    {exercises.map((exercise) => (
                         <p className="font-serif opacity-70" key={exercise.id}>
                             {exercise.title}
                         </p>
@@ -45,7 +45,7 @@ export default function TemplateButton({ template }: Props) {
                 </div>
 
                 <div className="flex justify-end gap-2 items-center mt-2">
-                    <img className="size-5 mt-1" src={clockIcon} />
+                    <img className="size-5 mt-1" src={ClockIcon} />
                     <p>2 days ago</p>
                 </div>
             </button>
@@ -66,7 +66,7 @@ export default function TemplateButton({ template }: Props) {
                         </SortableContext>
                     </DndContext>
                     <Link to={'/gym-workout'} state={{ template: { ...template, exercises } }}>
-                        <div className="btn mt-2">Start workout</div>
+                        <div className="btn btn-success text-white mt-2">Start workout</div>
                     </Link>
                 </div>
                 <form method="dialog" className="modal-backdrop">

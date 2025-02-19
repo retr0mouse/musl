@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import RemoveIcon from '/public/icons/RemoveIcon.svg';
+import TrashIcon from '/public/icons/TrashIcon.svg';
 
 interface Set {
     id: number;
@@ -14,7 +16,7 @@ interface Props {
 }
 
 export function ExerciseComponent(props: Props) {
-    const [title, setTitle] = useState(props.title ? props.title : "Untitled Exercise");
+    const title = props.title ? props.title : "Untitled Exercise";
     const [sets, setSets] = useState<Set[]>([{
         id: 0,
         previous: null,
@@ -51,18 +53,15 @@ export function ExerciseComponent(props: Props) {
     }
 
     return (
-        <div>
+        <div className="bg-white p-4 rounded-lg mb-4">
             <div className="flex justify-between items-center mb-4">
-                <input
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="text-2xl font-mono bg-transparent border-b border-neutral-700 focus:outline-none"
-                />
+
+                <h2 className="text-xl font-normal">{title}</h2>
                 <button
                     onClick={props.onRemove}
-                    className="text-red-500 font-bold px-2"
+                    className="size-6"
                 >
-                    x
+                    <img src={TrashIcon} alt={"kek"} />
                 </button>
             </div>
 
@@ -76,7 +75,7 @@ export function ExerciseComponent(props: Props) {
                     <React.Fragment key={set.id}>
                         <button onClick={() => removeSet(set.id)} className={`${set.done ? 'bg-neutral-300 opacity-50' : 'bg-red-400'} p-1 w-6 h-6 rounded col-start-1 place-self-end hover:opacity-80 transition-opacity`}
                         >
-                            <img src={"/icons/remove.svg"} alt={"kek"} />
+                            <img src={RemoveIcon} alt={"kek"} />
                         </button>
 
                         <div
@@ -98,7 +97,7 @@ export function ExerciseComponent(props: Props) {
                             }}
                             type="number"
                             min="0"
-                            className="input w-full h-7"
+                            className="input input-bordered w-full h-7"
                             placeholder="0"
                         />
                         <input
@@ -111,7 +110,7 @@ export function ExerciseComponent(props: Props) {
                             }}
                             type="number"
                             min="0"
-                            className="input w-full h-7"
+                            className="input input-bordered w-full h-7"
                             placeholder="0"
 
                         />
@@ -120,7 +119,9 @@ export function ExerciseComponent(props: Props) {
                             onClick={() => markSetDone(set)}
                             className={`${set.done ? 'bg-neutral-300 opacity-50' : 'bg-green-500'} p-1 w-6 h-6 rounded col-start-6 place-self-end hover:opacity-80 transition-opacity`}
                         >
-                            <img src={"/icons/check.svg"} alt={"kek"} />
+                            <svg fill="none" viewBox="0 0 24 24">
+                                <path stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 12.611 8.923 17.5 20 6.5" />
+                            </svg>
                         </button>
 
                     </React.Fragment>
